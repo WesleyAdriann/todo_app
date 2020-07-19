@@ -2,20 +2,58 @@ import styled, { keyframes } from 'styled-components';
 
 import selectIcon from '../../assets/images/down-arrow.svg';
 
-export const Wrapper = styled.div`
+export const Header = styled.header`
+  background-color: #323a41;
+  height: 50px;
+  width: 100vw;
+
+  > div {
+    align-items: center;
+    display: flex;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    padding: 0 1em;
+
+    p {
+      color: white;
+      font-size: 1.2em;
+
+      span {
+        color: #323a41;
+        background-color: white;
+        border-radius: 50%;
+        margin-left: .3em;
+        padding: 1px .4em;
+      }
+    }
+  }
+`;
+
+export const Main = styled.main`
   background: #571d8a;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #8E2DE2, #571d8a);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #8E2DE2, #571d8a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  min-height: 100vh;
-  min-width: 100vw;
+  flex-grow: 1;
 `;
 
 export const Content = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 1200px;
+  /* min-height: 100vh; */
   padding: 1em;
 
-  /* grid-template-columns: 20% 1fr; */
+  @media (min-width: 1000px) {
+    flex-direction: row;
+  }
+
+  @media (min-width: 1200px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const Form = styled.form`
@@ -23,8 +61,12 @@ export const Form = styled.form`
   border-radius: 7px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1em;
+  height: min-content;
   padding: 1em;
+
+  @media (min-width: 1000px) {
+    width: 25%;
+  }
 `;
 
 export const Input = styled.input`
@@ -33,7 +75,7 @@ export const Input = styled.input`
   border-radius: 5px;
   margin-bottom: 15px;
   padding: 10px;
-  transition: border 0.5s;
+  transition: border .5s;
 
   &:hover,
   &:focus {
@@ -57,7 +99,7 @@ export const Select = styled.select`
   margin-bottom: 15px;
   padding: 10px;
   text-transform: capitalize;
-  transition: border 0.5s;
+  transition: border .5s;
 
 
   &:hover,
@@ -75,7 +117,7 @@ export const Button = styled.button`
   color: white;
   font-weight: bold;
   padding: 10px;
-  transition: border 0.5s;
+  transition: border .5s;
 
   &:hover {
     border-color: #8E2DE2;
@@ -83,7 +125,14 @@ export const Button = styled.button`
 `;
 
 export const TodoList = styled.div`
+  display: grid;
+  flex-grow: 1;
+  gap: 1em;
 
+  @media (min-width: 1000px) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: min-content;
+  }
 `;
 
 const appearTodo = keyframes`
@@ -98,9 +147,25 @@ export const TodoStyled = styled.div`
   border-radius: 7px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1em;
   opacity: 0;
   padding: 1em;
+  position: relative;
+
+  @media (min-width: 1000px) {
+    height: 200px;
+
+  }
+`;
+
+export const TodoDelete = styled.span`
+  color: red;
+  cursor: pointer;
+  font-size: 1.5em;
+  line-height: 0.6;
+  right: 0;
+  padding: 0.5em;
+  position: absolute;
+  top: 0;
 `;
 
 export const TodoTitle = styled.p`
@@ -132,5 +197,25 @@ export const TodoDescription = styled.p`
 
   &::first-letter {
     text-transform: uppercase;
+  }
+`;
+
+export const Footer = styled.footer`
+  align-items: center;
+  background-color: #323a41;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  width: 100vw;
+
+  > div {
+
+    p {
+      color: white;
+      text-align: center;
+      a {
+        color: white;
+      }
+    }
   }
 `;
