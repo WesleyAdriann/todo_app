@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import selectIcon from '../../assets/images/down-arrow.svg';
 
@@ -23,6 +23,7 @@ export const Form = styled.form`
   border-radius: 7px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 1em;
   padding: 1em;
 `;
 
@@ -32,7 +33,6 @@ export const Input = styled.input`
   border-radius: 5px;
   margin-bottom: 15px;
   padding: 10px;
-  text-transform: capitalize;
   transition: border 0.5s;
 
   &:hover,
@@ -63,6 +63,7 @@ export const Select = styled.select`
   &:hover,
   &:focus {
     border-color: #510297;
+
   }
 
 `;
@@ -85,6 +86,51 @@ export const TodoList = styled.div`
 
 `;
 
-export const TodoStyled = styled.div`
+const appearTodo = keyframes`
+  to {
+    opacity: 1;
+  }
+`;
 
+export const TodoStyled = styled.div`
+  animation: linear .5s ${appearTodo} forwards;
+  background-color: white;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  opacity: 0;
+  padding: 1em;
+`;
+
+export const TodoTitle = styled.p`
+  font-size: 1.5em;
+  text-align: center;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+`;
+
+export const TodoPriority = styled.p`
+  color: white;
+  font-size: 0.8em;
+  text-align: center;
+  font-weight: bold;
+  margin: 1.5em 0;
+
+  > span {
+    background-color: darkviolet;
+    border-radius: 10px;
+    padding: .2em .5em;
+  }
+`;
+
+export const TodoDescription = styled.p`
+
+  margin-bottom: 1em;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 `;

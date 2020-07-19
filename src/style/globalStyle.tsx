@@ -2,12 +2,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 import Roboto from '../assets/fonts/Roboto-Regular.ttf';
+import RobotoBold from '../assets/fonts/Roboto-Bold.ttf';
 
 export const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'Roboto';
     src: url(${Roboto});
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: url(${RobotoBold});
+    font-weight: 700;
   }
 
   * {

@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useRef,
 } from 'react';
 
 import {
@@ -11,22 +12,33 @@ import {
   Button,
   TodoList,
   TodoStyled,
+  TodoTitle,
+  TodoPriority,
+  TodoDescription,
 } from './style';
 
 import {
   Todo,
+  FormElements,
   Priorities,
+  PrioritiesName,
 } from './types';
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [todos, setTodos] = useState<Todo[]>([{   description: 'x',
+    id: 0,
+    title: 'y',
+    priority: Priorities.medio, }]);
   const [form, setForm] = useState<Todo>();
 
   const handleAddTodo = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(form);
     const newTodos: Todo[] = [...todos, {...form!, id: todos.length}];
     setTodos(newTodos);
+    formRef.current?.reset();
+    const elements: FormElements = formRef.current?.elements as FormElements;
+    elements.title.focus();
   }
 
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -40,7 +52,7 @@ const App: React.FC = () => {
   return (
     <Wrapper>
       <Content>
-        <Form onSubmit={handleAddTodo}>
+        <Form onSubmit={handleAddTodo} ref={formRef}>
 
           <label htmlFor='title'>Titulo</label>
           <Input id='title' onChange={handleFormChange} required />
@@ -54,16 +66,15 @@ const App: React.FC = () => {
             <option value={Priorities.medio}> Médio </option>
             <option value={Priorities.alto}> Alto </option>
           </Select>
-
           <Button type='submit'> Salvar </Button>
         </Form>
         <TodoList>
           {
             todos.map((todo) => (
               <TodoStyled key={todo.id}>
-                <p>{todo.priority}</p>
-                <p>{todo.title}</p>
-                <p>{todo.description}</p>
+                <TodoTitle>{todo.title}</TodoTitle>
+                <TodoPriority><span>{PrioritiesName[todo.priority || 1]}</span></TodoPriority>
+                <TodoDescription>{todo.description}</TodoDescription>
               </TodoStyled>
             ))
           }
