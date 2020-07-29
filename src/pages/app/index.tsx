@@ -3,8 +3,10 @@ import React, {
   useRef,
 } from 'react';
 
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+
 import {
-  Header,
   Main,
   Content,
   Form,
@@ -17,7 +19,6 @@ import {
   TodoTitle,
   TodoPriority,
   TodoDescription,
-  Footer,
 } from './style';
 
 import {
@@ -57,11 +58,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Header>
-        <div>
-          <p>Tarefas <span> {todos.length} </span> </p>
-        </div>
-      </Header>
+      <Header sizeTodos={todos.length} />
       <Main>
         <Content>
           <Form onSubmit={handleAddTodo} ref={formRef}>
@@ -94,28 +91,7 @@ const App: React.FC = () => {
           </TodoList>
         </Content>
       </Main>
-      <Footer>
-        <div>
-          <p>
-            Autor&nbsp;
-            <a
-              rel='noopener noreferrer'
-              href='https://github.com/WesleyAdriann'
-              target='_blank'
-            >
-              Wesley Adriann
-            </a>
-            &nbsp;|&nbsp;
-            <a
-              rel='noopener noreferrer'
-              href='https://github.com/wesleyadriann/todo_app'
-              target='_blank'
-            >
-              Todo App Typescript
-            </a>
-          </p>
-        </div>
-      </Footer>
+      <Footer />
     </>
   )
 }

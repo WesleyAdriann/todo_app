@@ -2,35 +2,6 @@ import styled, { keyframes } from 'styled-components';
 
 import selectIcon from '../../assets/images/down-arrow.svg';
 
-export const Header = styled.header`
-  background-color: #323a41;
-  height: 50px;
-  width: 100vw;
-
-  > div {
-    align-items: center;
-    display: flex;
-    max-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 100%;
-    padding: 0 1em;
-
-    p {
-      color: white;
-      font-size: 1.2em;
-
-      span {
-        color: #323a41;
-        background-color: white;
-        border-radius: 50%;
-        margin-left: .3em;
-        padding: 1px .4em;
-      }
-    }
-  }
-`;
-
 export const Main = styled.main`
   background: #571d8a;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #8E2DE2, #571d8a);  /* Chrome 10-25, Safari 5.1-6 */
@@ -197,25 +168,5 @@ export const TodoDescription = styled.p`
 
   &::first-letter {
     text-transform: uppercase;
-  }
-`;
-
-export const Footer = styled.footer`
-  align-items: center;
-  background-color: #323a41;
-  display: flex;
-  justify-content: center;
-  height: 50px;
-  width: 100vw;
-
-  > div {
-
-    p {
-      color: white;
-      text-align: center;
-      a {
-        color: white;
-      }
-    }
   }
 `;
